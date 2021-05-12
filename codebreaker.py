@@ -8,19 +8,21 @@ def generateCode():
     return code
     
 def generateHint(guess,code):
-    hint = []
+    hint1=0
+    hint2=0
     for x in range(len(code)):
         if guess[x]==code[x]:
-            hint.append(2)
+            hint1+=1
         else:
             try:
                 ind=code.index(guess[x])
             except ValueError:
                 ind=-1
             if ind !=-1:
-                hint.append(1)
-    hint.sort(reverse=True)
-    return hint
+                hint2+=1
+    print("Hint 1:" +str(hint1))
+    print("Hint 2:" +str(hint2))
+    
 
 def strToList(string):
     li= []
@@ -54,7 +56,7 @@ def turn(scrt):
     attempt = userGuess()
     if scrt !=attempt:
         print("The hint:")
-        print(generateHint(attempt,scrt))
+        generateHint(attempt,scrt)
         return False
     else: 
         print("Congratulations you are correct")
